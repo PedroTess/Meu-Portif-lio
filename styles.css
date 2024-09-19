@@ -1,3 +1,7 @@
+@charset "UTG-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Cutive+Mono&family=Noto+Sans+JP:wght@100..900&family=Sofadi+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,31 +9,48 @@
     font-family: Arial, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #121212;
+    background-color: #040404;
     color: #ffffff;
     line-height: 1.6;
 }
 
 header {
-    background-color: #1a1a1a;
+    background-color: #040404;
     padding: 1rem;
     text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%
 }
 
-nav ul {
-    list-style: none;
-}
 
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
+nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    margin-right: 15px;
+    position: relative;
+}
+
+nav a::after {
+    content: " ";
+    width: 0%;
+    height: 2px;
+    background-color: #00bcd4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s ease-out;
+}
+
+nav a:hover::after{
+    width: 100%;
 }
 
 #inicio {
@@ -43,10 +64,11 @@ nav ul li a {
     align-items: center;
     height: 60vh;
     padding: 0 2rem;
+    scroll-margin-top: 100px;
 }
 
 .hero h1 {
-    margin-left: 400px;
+    margin-left: 300px;
 }
 
 .hero-content {
@@ -62,35 +84,92 @@ nav ul li a {
 }
 
 .profile-picture {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-color: #cccccc;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 2rem;
-    margin-right: 400px;
+    margin-right: 300px;
 }
 
-.profile-picture p {
-    color: #121212;
-    font-size: 1.2rem;
+.profile-picture img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: #00bcd4 2px solid;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
+    font-family: "Cutive Mono", monospace;
+    line-height: 1.1;
 }
 
 h1 span {
+    font-family: "Cutive Mono", monospace;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+h1 span::before {
+    content: "";
     color: #00bcd4;
+    animation: meunome 20s infinite;
+
+}
+
+h1 span::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    border-left: 2px solid #00bcd4;
+    right: -10px;
+    animation: cursor .8s infinite, digita 20s steps(15) infinite;
+    width: calc(100% + 12px);
+    background-color: #040404;
+
+}
+
+@keyframes digita {
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95%{
+        width: 0;
+    }
+    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%,85%{
+        width: calc(100% + 12px);
+    }
+}
+
+@keyframes cursor {
+    0%{
+        border-left: 2px solid #040404;
+    }
+}
+
+@keyframes meunome {
+
+    0%,20% {
+        content: "Pedro Tessniari";
+    }
+    21%,40% {
+        content: "Pedro Tessniari";
+    }
+    41%,60% {
+        content: "Pedro Tessniari";
+    }
+    61%,80% {
+        content: "Pedro Tessniari";
+    }
+    81%,100% {
+        content: "Pedro Tessniari";
+    }
+    
 }
 
 .about-content {
     border: #00bcd4 1px solid;
-    border-radius: 2%;
+    border-radius: 20px;
     width: 800px;
-    height: 450px;
+    height: 400px;
+    background-color: #141414;
 }
 
 .about {
@@ -99,21 +178,33 @@ h1 span {
     display: flex;
     justify-content: center;
     margin-top: 200px;
+    scroll-margin-top: 100px;
+}
+
+.about p {
+    font-family: "Cutive Mono", monospace;
+    margin: 20px;
+    font-size: 1.3rem;
 }
 
 .about h2 {
     font-size: 2rem;
-    margin-bottom: 1rem;
+    font-family: "Cutive Mono", monospace;
 }
 
 .projects {
     padding: 2rem;
     text-align: center;
+    margin-top: 200px;
+    background-color: #141414;
+    height: 500px;
+    scroll-margin-top: 100px;
 }
 
 .projects h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    font-family: "Cutive Mono", monospace;
 }
 
 .projects-grid {
@@ -126,6 +217,7 @@ h1 span {
     padding: 1rem;
     width: 30%;
     text-align: center;
+    border-radius: 20px;
 }
 
 .project-image {
@@ -135,6 +227,7 @@ h1 span {
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+    border-radius: 20px;
 }
 
 .project-image p {
@@ -145,15 +238,78 @@ h1 span {
 .contact {
     padding: 2rem;
     text-align: center;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact h2 {
+    margin-bottom: 4px;
+    font-family: "Cutive Mono", monospace;
+    margin-top: 20px;
+}
+
+.contact-info {
+    border: #00bcd4 1px solid;
+    width: 700px;
+    height: 200px;
+    border-radius: 20px;
 }
 
 .contact-info p {
-    margin-bottom: 1rem;
     font-size: 1.2rem;
 }
 
-.contact-info span {
-    color: #00bcd4;
+#callme span {
+    font-size: 0.9rem;
+    font-family: "Cutive Mono", monospace;
+    color: #a0a0a0;
+}
+
+#callme p {
+    font-family: "Cutive Mono", monospace;
+}
+
+#callme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    line-height: 1.1;
+    font-family: "Cutive Mono", monospace;
+    margin-bottom: 7px;
+    margin-right: 80px;
+}
+
+#callme img {
+    height: 32px;
+    margin: 7px;
+}
+
+#email span {
+    font-size: 0.9rem;
+    font-family: "Cutive Mono", monospace;
+    color: #a0a0a0;
+}
+
+#email p {
+    font-family: "Cutive Mono", monospace;
+}
+
+#email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    line-height: 1.1;
+    font-family: "Cutive Mono", monospace;
+    margin-bottom: 12px;
+}
+
+#email img {
+    height: 32px;
+    margin: 7px;
 }
 
 footer {
